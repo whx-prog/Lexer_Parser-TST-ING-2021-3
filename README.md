@@ -9,9 +9,31 @@
 ![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main/Lexer.png)
 
 
+
 语法分析效果图：
 ![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main/Parser_picture/%E5%9B%BE%E7%89%871.png)
 ![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main/Parser_picture/%E5%9B%BE%E7%89%872.png)
 ![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main/Parser_picture/%E5%9B%BE%E7%89%873.png)
 ![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main/Parser_picture/%E5%9B%BE%E7%89%874.png)
 ![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main/Parser_picture/%E5%9B%BE%E7%89%875.png)
+
+
+语法分析测试样例:
+
+正确表达式：
+[(1+2)],1!=((1-sizeof(1*1))/8-6%2)<=(2+3)*4+(&2!=1),1==12*4,1>=3*4,sizeof(sizeof(6+2)*6)!=2
+
+[(1+2)],1!=((1-sizeof(1*1))/8-6%2)<=(2+3)*4+(&2!=1),1==12*4,1>=3*4
+
+[(1+2)],1!=((1-sizeof(1*1))/8-6%2)<=(2+3)*4+(&2!=1),1==12*4,1>=3*4，1+2+3+4+5+6+7+8*（12%2）==3
+
+[sizeof(1+2)],1!=((1-sizeof(1*1))/8-6%2)<=(2+3)*4+sizeof(&2!=1),1==12*4,1>=3*4，1+2+3+4+5+6+7+8*sizeof（12%2）==3
+
+错误表达式：
+(((([(1+2)],1!=((1-sizeof(1*1))/8-6%2)<=(2+3)*4+(&2!=1),1==12*4,1>=3*4,sizeof(sizeof(6+2)*6)!=2  
+
+-=[(1+2)],1!=((1-sizeof(1*1))/8-6%2)<=(2+3)*4+(&2!=1),1==12*4,1>=3*4
+
+sizeof1[(1+2)],1!=((1-sizeof(1*1))/8-6%2)<=(2+3)*4+sizeof(&2!=1),1==12*4,1>=3*4，1+2+3+4+5+6+7+8*sizeof（12%2）
+
+=-=-=[((1+2))],1!=((1-sizeof(1*1))/8-6%2)<=(2/3)*4+sizeof(&2!=1),1==12*4,1>=3*4，1+2+3+4+5+6+7+8*sizeof（12%2）
