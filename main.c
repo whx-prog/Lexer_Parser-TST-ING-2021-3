@@ -3,8 +3,8 @@ jmp_buf envbuf;
 int JmpRet = PROGRAM_BEGIN;
 int Row = 0;
 
-int main(int argc, char *argv[]) {                       //ÕûĞÍ¸¡µãĞÍÒÔ¼°¿Õ¸ñ£¬±êÁ¿²»´æ
-	phashNode_t hashTable[MAXKEY] = { 0 };               //ÎÄ¼ş¶ÁÈë×Ö·ûÄ¬ÈÏÎª±êÊ¶·û¡£
+int main(int argc, char *argv[]) {                       //æ•´å‹æµ®ç‚¹å‹ä»¥åŠç©ºæ ¼ï¼Œæ ‡é‡ä¸å­˜
+	phashNode_t hashTable[MAXKEY] = { 0 };               //æ–‡ä»¶è¯»å…¥å­—ç¬¦é»˜è®¤ä¸ºæ ‡è¯†ç¬¦ã€‚
 	hashNode_t InsertNode[] = {
 	{TK_PLUS,NULL,"+"},
 	{TK_MINUS,NULL,"-"},
@@ -31,9 +31,9 @@ int main(int argc, char *argv[]) {                       //ÕûĞÍ¸¡µãĞÍÒÔ¼°¿Õ¸ñ£¬±
 	{TK_COMMA,NULL,","},
 	{TK_ELLIPSIS,NULL,"..."},
 	{TK_EOF,NULL,"EOF"},
-	{TK_CINT,NULL,"ÕûĞÍ³£Á¿"},
-	{TK_CCHAR,NULL,"×Ö·û³£Á¿"},
-	{TK_CSTR,NULL,"×Ö·û´®³£Á¿"},
+	{TK_CINT,NULL,"æ•´å‹å¸¸é‡"},
+	{TK_CCHAR,NULL,"å­—ç¬¦å¸¸é‡"},
+	{TK_CSTR,NULL,"å­—ç¬¦ä¸²å¸¸é‡"},
 	{KW_CHAR,NULL,"char"},
 	{KW_SHORT,NULL,"short"},
 	{KW_INT,NULL,"int"},
@@ -53,6 +53,7 @@ int main(int argc, char *argv[]) {                       //ÕûĞÍ¸¡µãĞÍÒÔ¼°¿Õ¸ñ£¬±
 	{TK_jing,NULL,"#"},
 	{TK_DE,NULL,"+="},
 	{TK_MAOHAO,NULL,"\""},
+	{TK_MOD_EQ,NULL,"%="},
 	};
 	for (int i = 0; i < sizeof(InsertNode) / sizeof(hashNode_t); i++) {
 		hashInsert(hashTable, &InsertNode[i]);
@@ -76,7 +77,7 @@ int main(int argc, char *argv[]) {                       //ÕûĞÍ¸¡µãĞÍÒÔ¼°¿Õ¸ñ£¬±
 	fclose(fp);
 	/*-------------------------------------------------------------------------*/
 	//printf("%s", str);
-	/*×²¹şÏ£±í£¬Í¬Ê±½«Ê¶±ğ³öÀ´µÄÔªËØÈëÁ´±í*/
+	/*æ’å“ˆå¸Œè¡¨ï¼ŒåŒæ—¶å°†è¯†åˆ«å‡ºæ¥çš„å…ƒç´ å…¥é“¾è¡¨*/
 	pos = 0;
 	int i = 0;
 //	int begin, end;
@@ -88,16 +89,16 @@ int main(int argc, char *argv[]) {                       //ÕûĞÍ¸¡µãĞÍÒÔ¼°¿Õ¸ñ£¬±
 		alp2word(str, &pos, pNew);
 		Findhash(hashTable, pNew);
 		WordTailInsert(&pHead, &pTail, pNew);
-		//printf("¼ÆËãÖĞ....",i++);       
+		//printf("è®¡ç®—ä¸­....",i++);       
 	}
 	//ColorOutput(pHead);
 	
-	//i = count(pHead);      //¼ÆËãÈÎÒâ´Ê×éµÄ¹¦ÄÜ
-	//end = time(NULL);      //ÓÃÊ±¼ÆËã
+	//i = count(pHead);      //è®¡ç®—ä»»æ„è¯ç»„çš„åŠŸèƒ½
+	//end = time(NULL);      //ç”¨æ—¶è®¡ç®—
 	//printf("\n");
-	//printf("Ê¥¾­µ¥´ÊÊıÎª£º%d", i);
+	//printf("åœ£ç»å•è¯æ•°ä¸ºï¼š%d", i);
 	//printf("\n");
-	//printf("ËùÓÃÊ±¼äÎª=%dÃë", end-begin);
+	//printf("æ‰€ç”¨æ—¶é—´ä¸º=%dç§’", end-begin);
 
 	//void print();
 	
@@ -105,19 +106,19 @@ int main(int argc, char *argv[]) {                       //ÕûĞÍ¸¡µãĞÍÒÔ¼°¿Õ¸ñ£¬±
 	//if (JmpRet) {
 	//	goto AAA;
 //	}
-/*=------------------------Óï·¨·ÖÎö--------------------------------------*/
+/*=------------------------è¯­æ³•åˆ†æ--------------------------------------*/
 	//Next(&pCur);
 	E(&pCur);
 //AAA:	
-	if (fail == 0&& JmpRet==0) printf("ÕıÈ·±í´ïÊ½");
+	if (fail == 0&& JmpRet==0) printf("æ­£ç¡®è¡¨è¾¾å¼");
 	else if (fail == 1||JmpRet==1) {
 
-		printf("´íÎó±í´ïÊ½");
+		printf("é”™è¯¯è¡¨è¾¾å¼");
 	}
 	printf("\n");
 	ColorOutput(pHead);
 	printf("\n");
-	i = count(pHead);      //¼ÆËãÈÎÒâ´Ê×éµÄ¹¦ÄÜ
+	i = count(pHead);      //è®¡ç®—ä»»æ„è¯ç»„çš„åŠŸèƒ½
 	//print(pHead);
 	return 0;
 }
