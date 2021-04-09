@@ -4,9 +4,9 @@
 对Token流进行语法判断
 已包含的表达式终结符包括:+ - * / % () [] == != < > <= >= sizeof()
 
-词法分析效果图：
-DFA：
+DFA：![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main/DFA.png)
 
+词法分析效果图：
 ![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main/Lexer.png)
 
 
