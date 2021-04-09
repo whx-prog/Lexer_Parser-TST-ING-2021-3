@@ -15,15 +15,15 @@ DFA：![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main
 
 
 语法分析文法： 
-              E->A{,A}/n
-              A->B{|=B|^=B|&=B|>>=B|<<=B|-=B|+=B|%=B|*=B|/=B|=B}/n
-              B->C{!=C|==C}
-              C->E{>E|>=E|<E|<=E}
-              E->F{<<F|>>F}
-              F->G{+G|-G}
-              G->H{*H|/H|%H}
-              H->SIZEOFI|~I|!I|&I|*I|--I|++I|+I|-I
-              I->[E]|(E)|.标识符|->标识符
+              E->A{,A}  
+              A->B{|=B|^=B|&=B|>>=B|<<=B|-=B|+=B|%=B|*=B|/=B|=B}  
+              B->C{!=C|==C}  
+              C->E{>E|>=E|<E|<=E}  
+              E->F{<<F|>>F}  
+              F->G{+G|-G}  
+              G->H{*H|/H|%H}  
+              H->SIZEOFI|~I|!I|&I|*I|--I|++I|+I|-I  
+              I->[E]|(E)|.标识符|->标识符  
 
 
 语法分析效果图：
