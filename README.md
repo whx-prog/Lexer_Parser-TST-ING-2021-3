@@ -15,8 +15,8 @@ DFA：![image](https://github.com/whx-prog/Lexer_Parser-TST-ING-2021-3/blob/main
 
 
 语法分析文法： 
-              E->A{,A}
-              A->B{|=B|^=B|&=B|>>=B|<<=B|-=B|+=B|%=B|*=B|/=B|=B}
+              E->A{,A}/n
+              A->B{|=B|^=B|&=B|>>=B|<<=B|-=B|+=B|%=B|*=B|/=B|=B}/n
               B->C{!=C|==C}
               C->E{>E|>=E|<E|<=E}
               E->F{<<F|>>F}
